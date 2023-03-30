@@ -211,7 +211,39 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct(matrixArrays) {}
+function greatestProduct(matrixArray) {
+  let max = 0;
+  let sum = 0;
+  console.log("Line 217");
+
+  matrixArray.forEach((elem1, i, thisArr) => {
+    elem1.forEach((elem2, j, arr) => {
+      if (i < thisArr.length-3) {
+        sum = (elem2 * thisArr[i+1][j] * thisArr[i+2][j] * thisArr[i+3][j]);
+        console.log("Line 222:", sum);
+        if (max < sum) {
+          max = sum;
+        }
+      }
+    });
+  });
+
+  matrixArray.forEach((elem1, i, thisArr) => {
+    elem1.forEach((elem2, j, arr) => {
+      if (j < arr.length-3) {
+        sum = (elem2 * thisArr[i][j+1] * thisArr[i][j+2] * thisArr[i][j+3]);
+        console.log("Line 253:", sum);
+        if (max < sum) {
+          max = sum;
+        }
+      }
+    });
+  });
+
+  return max;
+}
+
+console.log(greatestProduct(matrix));
 
 
 
